@@ -1,6 +1,6 @@
 # Hệ thống quản lý đề tài khoa học
 
-[![GitHub release](https://img.shields.io/github/release/J2TeaM/idm-trial-reset.svg?maxAge=2592000)](https://github.com/HoangtuVungxa/QuanLyDeTaiKhoaHocThongTin/releases/latest)
+[![GitHub release](https://img.shields.io/github/release/HoangtuVungxa/QuanLyDeTaiKhoaHocThongTin.svg?maxAge=2592000)](https://github.com/HoangtuVungxa/QuanLyDeTaiKhoaHocThongTin/releases/latest)
 [![license](https://img.shields.io/github/license/J2TeaM/idm-trial-reset.svg?maxAge=2592000)](https://github.com/J2TeaM/idm-trial-reset/blob/master/LICENSE)
 
 Hệ thống quản lý đề tài khoa học ở các nhà trường quân đội:
