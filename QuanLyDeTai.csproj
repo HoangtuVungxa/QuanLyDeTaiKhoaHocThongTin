@@ -131,6 +131,18 @@
     <Compile Include="TaiKhoanDaDuyet.Designer.cs">
       <DependentUpon>TaiKhoanDaDuyet.cs</DependentUpon>
     </Compile>
+    <Compile Include="TraCuuDMDT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TraCuuDMDT.Designer.cs">
+      <DependentUpon>TraCuuDMDT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TraCuuLLKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TraCuuLLKH.Designer.cs">
+      <DependentUpon>TraCuuLLKH.cs</DependentUpon>
+    </Compile>
     <Compile Include="TroLy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +184,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TaiKhoanDaDuyet.resx">
       <DependentUpon>TaiKhoanDaDuyet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TraCuuDMDT.resx">
+      <DependentUpon>TraCuuDMDT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TraCuuLLKH.resx">
+      <DependentUpon>TraCuuLLKH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TroLy.resx">
       <DependentUpon>TroLy.cs</DependentUpon>

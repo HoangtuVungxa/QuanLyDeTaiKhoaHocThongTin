@@ -10,20 +10,23 @@ using System.Windows.Forms;
 
 namespace QuanLyDeTai
 {
-    public partial class LyLichKhoaHoc : Form
+    public partial class TraCuuLLKH : Form
     {
         DataTable dtLLKH;
-        public LyLichKhoaHoc()
+        public TraCuuLLKH()
         {
             InitializeComponent();
         }
 
-        private void LyLichKhoaHoc_Load(object sender, EventArgs e)
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void TraCuuLLKH_Load(object sender, EventArgs e)
         {
             string sql;
             txtMaTG.Enabled = false;
-            btnLuuTG.Enabled = false;
-            btnHuy.Enabled = false;
 
             sql = "SELECT * FROM CapBac";
             ChucNang.DuaDuLieuVaoComboBox(sql, cbtxtCapBac, "MaCapBac", "TenCapBac");
@@ -45,12 +48,7 @@ namespace QuanLyDeTai
 
         private void dtgTacGia_Click(object sender, EventArgs e)
         {
-            if (btnThemTG.Enabled == false) //Không cho lấy dữ liệu từ datagrid lên textbox
-            {
-                MessageBox.Show("Đang ở chế độ thêm mới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtMaTG.Focus();
-                return;
-            }
+            
             if (dtLLKH.Rows.Count == 0) //Nếu không có dữ liệu
             {
                 MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -65,141 +63,17 @@ namespace QuanLyDeTai
             txtSDT.Text = dtgTacGia.CurrentRow.Cells["SoDienThoai"].Value.ToString();
             txtEmail.Text = dtgTacGia.CurrentRow.Cells["Email"].Value.ToString();
             rtxtGhiChu.Text = dtgTacGia.CurrentRow.Cells["GhiChu"].Value.ToString();
-
-            btnSuaTG.Enabled = true;
-            btnXoaTG.Enabled = true;
-            btnHuy.Enabled = true;
-        }
-
-        private void btnThemTG_Click(object sender, EventArgs e)
-        {
-            btnSuaTG.Enabled = false;
-            btnXoaTG.Enabled = false;
-            btnHuy.Enabled = true;
-            btnLuuTG.Enabled = true;
-            btnThemTG.Enabled = false;
-            XoaDuLieuTextBox(); //Xoá trắng các textbox
-            txtMaTG.Enabled = true; //cho phép nhập mới
-            txtMaTG.Focus();
-        }
-
-        private void btnSuaTG_Click(object sender, EventArgs e)
-        {
-            string sql; //Lưu câu lệnh sql
-            if (dtLLKH.Rows.Count == 0)
-            {
-                MessageBox.Show("Không còn dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            if (txtMaTG.Text == "") //nếu chưa chọn dữ liệu nào
-            {
-                MessageBox.Show("Bạn chưa chọn dữ liệu nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            if ((txtMaTG.Text.Trim().Length == 0) || (txtTenTG.Text.Trim().Length == 0) || (cbtxtCapBac.Text.Trim().Length == 0)
-                || (cbtxtChucVu.Text.Trim().Length == 0) || (cbtxtHocVi.Text.Trim().Length == 0)
-                || (txtNamSinh.Text.Trim().Length == 0) || (txtSDT.Text.Trim().Length == 0)
-                || (txtEmail.Text.Trim().Length == 0))
-            {
-                MessageBox.Show("Còn ô dữ liệu chưa được nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtTenTG.Focus();
-                return;
-            }
-            sql = "UPDATE TacGia SET TenTacGia=N'" + txtTenTG.Text.ToString() + "',MaCapBac=N'" + txtMaCapBac.Text.ToString()
-                + "',MaChucVu=N'" + txtMaChucVu.Text.ToString() + "',MaHocVi=N'" + txtMaHocVi.Text.ToString()
-                + "',NamSinh=N'" + txtNamSinh.Text.ToString() + "',SoDienThoai=N'" + txtSDT.Text.Trim()
-                + "',Email=N'" + txtEmail.Text.Trim() + "',GhiChu=N'" + rtxtGhiChu.Text.Trim()
-                + "' WHERE MaTacGia=N'" + txtMaTG.Text.ToString().Trim() + "'";
-            ChucNang.ChayCauLenhSQL(sql);
-            TaiDuLieuVaoGridView();
-            XoaDuLieuTextBox();
-            btnHuy.Enabled = false;
-        }
-
-        private void btnXoaTG_Click(object sender, EventArgs e)
-        {
-            string sql;
-            if (dtLLKH.Rows.Count == 0)
-            {
-                MessageBox.Show("Không còn dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            if (txtMaTG.Text == "") //nếu chưa chọn bản ghi nào
-            {
-                MessageBox.Show("Bạn chưa chọn dữ liệu nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            if (MessageBox.Show("Bạn có muốn xoá dữ liệu này không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                sql = "DELETE TacGia WHERE MaTacGia=N'" + txtMaTG.Text + "'";
-                ChucNang.ChayCauLenhSQL(sql);
-                TaiDuLieuVaoGridView();
-                XoaDuLieuTextBox();
-            }
-        }
-
-        private void btnLuuTG_Click(object sender, EventArgs e)
-        {
-            string sql; //Lưu lệnh sql
-            if ((txtMaTG.Text.Trim().Length == 0) || (txtTenTG.Text.Trim().Length == 0) || (txtMaCapBac.Text.Trim().Length == 0)
-                || (txtMaChucVu.Text.Trim().Length == 0) || (txtMaHocVi.Text.Trim().Length == 0)
-                || (txtNamSinh.Text.Trim().Length == 0) || (txtSDT.Text.Trim().Length == 0)
-                || (txtEmail.Text.Trim().Length == 0))
-            {
-                MessageBox.Show("Còn ô dữ liệu chưa được nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtMaTG.Focus();
-                return;
-            }
-
-            sql = "Select MaTacGia From TacGia where MaTacGia=N'" + txtMaTG.Text.Trim() + "'";
-            if (ChucNang.KiemTraTrung(sql))
-            {
-                MessageBox.Show("Mã tài liệu này đã có, bạn phải nhập mã khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtMaTG.Focus();
-                return;
-            }
-
-            sql = "INSERT INTO TacGia VALUES(N'" + txtMaTG.Text.ToString().Trim() + "',N'" + txtTenTG.Text
-                + "',N'" + txtMaCapBac.Text + "',N'" + txtMaChucVu.Text + "',N'" + txtMaHocVi.Text + "',N'"
-                + txtNamSinh.Text + "',N'" + txtSDT.Text + "',N'" + txtEmail.Text + "',N'" + rtxtGhiChu.Text + "')";
-            ChucNang.ChayCauLenhSQL(sql); //Thực hiện câu lệnh sql
-            TaiDuLieuVaoGridView(); //Nạp lại DataGridView
-            XoaDuLieuTextBox();
-            btnXoaTG.Enabled = true;
-            btnThemTG.Enabled = true;
-            btnSuaTG.Enabled = true;
-            btnHuy.Enabled = false;
-            btnLuuTG.Enabled = false;
-            txtMaTG.Enabled = false;
-        }
-
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-            XoaDuLieuTextBox();
-            btnHuy.Enabled = false;
-            btnThemTG.Enabled = true;
-            btnXoaTG.Enabled = true;
-            btnSuaTG.Enabled = true;
-            btnLuuTG.Enabled = false;
-            txtMaTG.Enabled = false;
-            TaiDuLieuVaoGridView();
-        }
-
-        private void btnDong_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void btnTimTG_Click(object sender, EventArgs e)
         {
             txtMaTG.Enabled = true;
             txtMaCapBac.Enabled = true;
-            cbtxtCapBac.Enabled = false;
+            cbtxtCapBac.Enabled = true;
             txtMaChucVu.Enabled = true;
-            txtMaChucVu.Enabled = false;
+            txtMaChucVu.Enabled = true;
             txtMaHocVi.Enabled = true;
-            cbtxtHocVi.Enabled = false;
-            btnHuy.Enabled = true;
+            cbtxtHocVi.Enabled = true;
             string sql;
             if ((txtMaTG.Text == "") && (txtTenTG.Text == "") && (cbtxtCapBac.Text == "") && (cbtxtChucVu.Text == "")
                 && (cbtxtHocVi.Text == "") && (txtNamSinh.Text == "") && (txtSDT.Text == "")
@@ -326,4 +200,3 @@ namespace QuanLyDeTai
         }
     }
 }
-;
