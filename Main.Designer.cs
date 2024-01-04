@@ -164,12 +164,14 @@
             this.subMenuTraCuuTheoDMDT.Name = "subMenuTraCuuTheoDMDT";
             this.subMenuTraCuuTheoDMDT.Size = new System.Drawing.Size(189, 22);
             this.subMenuTraCuuTheoDMDT.Text = "Theo danh mục đề tài";
+            this.subMenuTraCuuTheoDMDT.Click += new System.EventHandler(this.subMenuTraCuuTheoDMDT_Click);
             // 
             // subMenuTraCuuTheoLLKH
             // 
             this.subMenuTraCuuTheoLLKH.Name = "subMenuTraCuuTheoLLKH";
             this.subMenuTraCuuTheoLLKH.Size = new System.Drawing.Size(189, 22);
             this.subMenuTraCuuTheoLLKH.Text = "Theo lý lịch khoa học";
+            this.subMenuTraCuuTheoLLKH.Click += new System.EventHandler(this.subMenuTraCuuTheoLLKH_Click);
             // 
             // MenuGioiThieu
             // 
