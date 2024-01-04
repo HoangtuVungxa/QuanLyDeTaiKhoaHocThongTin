@@ -103,6 +103,12 @@ namespace QuanLyDeTai
             traCuuDMDT.ShowDialog();
         }
 
+        private void subMenuBaoCao_Click(object sender, EventArgs e)
+        {
+            BaoCao baoCao = new BaoCao();
+            baoCao.ShowDialog();
+        }
+
         private void subMenuDanhMucTacGia_Click(object sender, EventArgs e)
         {
             TacGia_DeTai tacGia_DeTai = new TacGia_DeTai();
