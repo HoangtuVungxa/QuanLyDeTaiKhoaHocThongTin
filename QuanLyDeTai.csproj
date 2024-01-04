@@ -73,6 +73,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaoCao.Designer.cs">
+      <DependentUpon>BaoCao.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChucNang.cs" />
     <Compile Include="DangKy.cs">
       <SubType>Form</SubType>
@@ -112,6 +118,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuanLyDeTaiWEBDataSet.cs">
+      <DependentUpon>QuanLyDeTaiWEBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyDeTaiWEBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyDeTaiWEBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="TacGia_DeTai.cs">
       <SubType>Form</SubType>
@@ -149,6 +163,9 @@
     <Compile Include="TroLy.Designer.cs">
       <DependentUpon>TroLy.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BaoCao.resx">
+      <DependentUpon>BaoCao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DangKy.resx">
       <DependentUpon>DangKy.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +193,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BaoCao.rdlc" />
     <EmbeddedResource Include="TacGia_DeTai.resx">
       <DependentUpon>TacGia_DeTai.cs</DependentUpon>
     </EmbeddedResource>
@@ -204,6 +222,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="QuanLyDeTaiWEBDataSet.xsc">
+      <DependentUpon>QuanLyDeTaiWEBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyDeTaiWEBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QuanLyDeTaiWEBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QuanLyDeTaiWEBDataSet.xss">
+      <DependentUpon>QuanLyDeTaiWEBDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

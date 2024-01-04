@@ -82,6 +82,7 @@
             this.subMenuBaoCao.Name = "subMenuBaoCao";
             this.subMenuBaoCao.Size = new System.Drawing.Size(180, 22);
             this.subMenuBaoCao.Text = "Báo cáo";
+            this.subMenuBaoCao.Click += new System.EventHandler(this.subMenuBaoCao_Click);
             // 
             // subMenuTaiKhoanDaDuyet
             // 
