@@ -97,6 +97,12 @@ namespace QuanLyDeTai
             Login.ActiveForm.Close();
         }
 
+        private void subMenuTraCuuTheoDMDT_Click(object sender, EventArgs e)
+        {
+            TraCuuDMDT traCuuDMDT = new TraCuuDMDT();
+            traCuuDMDT.ShowDialog();
+        }
+
         private void subMenuDanhMucTacGia_Click(object sender, EventArgs e)
         {
             TacGia_DeTai tacGia_DeTai = new TacGia_DeTai();
@@ -109,6 +115,10 @@ namespace QuanLyDeTai
             doiMatKhau.ShowDialog();    
         }
 
-        
+        private void subMenuTraCuuTheoLLKH_Click(object sender, EventArgs e)
+        {
+            TraCuuLLKH traCuuLLKH = new TraCuuLLKH();
+            traCuuLLKH.ShowDialog();
+        }
     }
 }
